@@ -99,7 +99,7 @@ public class TDengineSinkTask extends SinkTask {
         // do some debug log
         int size = batch.size();
         SinkRecord record = batch.get(0);
-        log.debug(
+        log.info(
                 "Received {} records. First record kafka coordinates:({}-{}-{}). Writing them to the "
                         + "database...",
                 size, record.topic(), record.kafkaPartition(), record.kafkaOffset()
