@@ -85,7 +85,7 @@ public class TDengineSourceTask extends SourceTask {
                 TimeUnit.MILLISECONDS.sleep(config.getPollInterval());
             }
         }
-        log.info("start poll new data from table:" + executor.getTableName());
+        log.info("===start poll new data from table:" + executor.getTableName());
         List<SourceRecord> results = new ArrayList<>();
         try {
             executor.startQuery();
@@ -93,7 +93,9 @@ public class TDengineSourceTask extends SourceTask {
             int batchMaxRows = config.getFetchMaxRows();
             boolean hadNext = true;
             while (results.size() < batchMaxRows && (hadNext = executor.next())) {
-                results.add(executor.extractRecord());
+                SourceRecord record = executor.extractRecord();
+                log.info("===Extracted Record:" + record.toString());
+                results.add(record);
             }
             if (!hadNext) {
                 resetAndRequeueHead(executor, false);

@@ -102,7 +102,8 @@ public class LineMapper extends TableMapper {
         } catch (SQLException e) {
             log.error("resultSet get value error", e);
         }
-
-        return new PendingRecord(partition, ts, topic, null, sb.toString());
+        String line = sb.toString();
+        log.info("===" + line + "===");
+        return new PendingRecord(partition, ts, topic, null, line);
     }
 }
