@@ -47,7 +47,7 @@ public class LineMapper extends TableMapper {
                             sb.append(",").append(tag).append("=").append(resultSet.getDouble(tag)).append("f64");
                             break;
                         case "BINARY":
-                            sb.append(",").append(tag).append("=\"").append(resultSet.getObject(tag)).append("\"");
+                            sb.append(",").append(tag).append("=\"").append(resultSet.getString(tag)).append("\"");
                             break;
                         case "BOOL":
                             sb.append(",").append(tag).append("=").append(resultSet.getBoolean(tag));
