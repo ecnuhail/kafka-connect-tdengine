@@ -67,7 +67,7 @@ public class TDengineSinkTask extends SinkTask {
         if (records.isEmpty()) {
             return;
         }
-
+        log.debug("pub received {} records", records.size());
         List<SinkRecord> currentGroup = new ArrayList<>();
         int maxBatchSize = config.getBatchSize();
 
